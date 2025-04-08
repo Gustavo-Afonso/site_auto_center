@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link"
 import Image from "next/image"
 import {
@@ -7,15 +9,42 @@ import {
   Clock,
   ArrowRight,
   WineIcon as Facebook, Instagram, Youtube,
-  Menu
+  Menu,
+  
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { WhatsAppButton } from "@/components/whatsapp-button"
+import {  BeforeAfterSimpleRow } from "@/components/antes_depois";
 
-import BeforeAfterGallery from "@/components/antes_depois"
+
+
 
 
 export default function Home() {
+
+  const images = [
+    {
+      before: '/imagem-antes-depois/HB20-antes.jpg',
+      after: '/imagem-antes-depois/HB20-depois.jpg',
+    },
+    {
+      before: '/imagem-antes-depois/kia-antes.jpg',
+      after: '/imagem-antes-depois/kia-depois.jpg',
+    },
+    {
+      before: '/imagem-antes-depois/onix-antes.jpg',
+      after: '/imagem-antes-depois/onix-depois.jpg',
+    },
+    { 
+      before: '/imagem-antes-depois/corola-antes.jpg',
+      after: '/imagem-antes-depois/corola-depois.jpg',
+    }, 
+    {
+      before: '/imagem-antes-depois/uno-antes.jpg',
+      after: '/imagem-antes-depois/uno-depois.jpg',
+    },
+  ];
+
   return (
     <div className="flex min-h-screen flex-col">
       {/* ===== HEADER / NAVEGAÇÃO ===== */}
@@ -79,15 +108,18 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <div className="flex flex-col justify-center space-y-4">
+              
                 <div className="space-y-2">
+                  
                   <h1 className="text-3xl  text-orange-600 font-bold tracking-tighter sm:text-5xl xl:text-6xl/none italic">
                     <span className="space-y-2">AUTO <span className="text-black space-y-2">CENTER</span></span>
                     <p className="text-black">WF LAMTERNAGEM <span className="text-orange-600">.</span></p>
-            </h1>
+                  </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
                     Funilaria, pintura e restauração com qualidade e compromisso. Seu carro merece o melhor tratamento.
                   </p>
                 </div>
+                
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Button asChild size="lg">
                     <Link href="#services">
@@ -177,24 +209,41 @@ export default function Home() {
             </div>
           </div>
         </section>
+          {/*compnente antes depois*/}
+          <section id="gallery" className="w-full py-8 md:py-16 lg:py-24 bg-gray-50">
+      <div className="container px-4 md:px-6">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <div className="space-y-2 w-full max-w-md">
+            <h2 className="text-2xl font-bold rounded-full bg-orange-600 text-white px-6 py-2 tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl">
+              Antes e Depois
+           .Concurrent
 
-        {/* ===== SEÇÃO ANTES E DEPOIS ===== */}
-        <section id="gallery" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2 w-100">
-                <h2 className="text-3xl font-bold rounded-full bg-orange-600 tracking-tighter sm:text-5xl">Antes e Depois</h2>
-              </div>
-              <div className="max-w-[900px] text-center text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-             Veja a transformação que realizamos em cada veículo que passa por nossas mãos.
-             </div>
-            </div>
-            <div className="mx-auto max-w-5xl py-12">
-              <BeforeAfterGallery />
+            </h2>
+          </div>
+          <div className="max-w-[900px] text-center text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl/relaxed">
+            Veja a transformação que realizamos em cada veículo que passa por nossas mãos.
+          </div>
+        </div>
+        
+        <div className="mx-auto max-w-5xl py-8 md:py-12">
+          {/* Componente de fileira de imagens simples */}
+          <BeforeAfterSimpleRow images={images} />
+          
+          {/* Logo adicional (opcional) */}
+          <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto mt-8 md:mt-12">
+            <div className="relative aspect-video w-full">
+              <Image
+                src="/logo/AUTOCENTER.png"
+                alt="AutoCenter Logo"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, (max-width: 1024px) 60vw, 50vw"
+                className="object-contain"
+              />
             </div>
           </div>
-        </section>
-
+        </div>
+      </div>
+    </section>
         {/* ===== SEÇÃO SOBRE NÓS ===== */}
         <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-muted">
           <div className="container px-4 md:px-6">

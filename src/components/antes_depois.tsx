@@ -1,61 +1,86 @@
-"use client"
+// components/BeforeAfterSimpleRow.tsx
+'use client';
 
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { useState } from 'react';
 
-const BeforeAfterFade = ({ beforeImageSrc, afterImageSrc, altText, width, height }) => {
-  const [showBefore, setShowBefore] = useState(true);
-  
-  useEffect(() => {
-    // Configura o timer para fazer o fade após 3 segundos
-    const timer = setTimeout(() => {
-      setShowBefore(false);
-    }, 3000);
-    
-    // Limpa o timer quando o componente é desmontado
-    return () => clearTimeout(timer);
-  }, []);
+interface BeforeAfterImage {
+  before: string;
+  after: string;
+}
+
+interface BeforeAfterSimpleRowProps {
+  images: BeforeAfterImage[];
+}
+
+export function BeforeAfterSimpleRow({ images }: BeforeAfterSimpleRowProps) {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const openModal = (image: string) => {
+    setSelectedImage(image);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
 
   return (
-    <div className="relative w-full max-w-lg mx-auto">
-      {/* Container com tamanho fixo para manter o layout estável */}
-      <div 
-        className="relative w-full" 
-        style={{ 
-          aspectRatio: `${width}/${height}`,
-          maxWidth: '100%'
-        }}
-      >
-        {/* Imagem "depois" (sempre visível, fica atrás) */}
-        <div className="absolute inset-0">
-          <Image
-            src={afterImageSrc}
-            alt={`${altText} - depois`}
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
-            priority={false}
-          />
-        </div>
-        
-        {/* Imagem "antes" (com transição fade-out) */}
-        <div 
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            showBefore ? 'opacity-100' : 'opacity-0 pointer-events-none'
-          }`}
-        >
-          <Image
-            src={beforeImageSrc}
-            alt={`${altText} - antes`}
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
-            priority={true}
-          />
-        </div>
+    <div className="w-full py-8">
+      <div className="space-y-6">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className="flex flex-col md:flex-row gap-4 max-w-4xl mx-auto"
+          >
+            {/* Imagem "Antes" */}
+            <div className="w-full h-48 sm:h-64 md:h-80 lg:h-96 rounded-lg shadow-lg overflow-hidden cursor-pointer">
+              <img
+                src={image.before}
+                alt={`Antes ${index + 1}`}
+                className="w-full h-full object-cover"
+                onClick={() => openModal(image.before)}
+              />
+              <div className="text-center text-sm font-bold mt-1 text-gray-600">
+                Antes
+              </div>
+            </div>
+
+            {/* Imagem "Depois" */}
+            <div className="w-full h-48 sm:h-64 md:h-80 lg:h-96 rounded-lg shadow-lg overflow-hidden cursor-pointer">
+              <img
+                src={image.after}
+                alt={`Depois ${index + 1}`}
+                className="w-full h-full object-cover"
+                onClick={() => openModal(image.after)}
+              />
+              <div className="text-center text-sm font-bold mt-1 text-gray-600">
+                Depois
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
+
+      {/* Modal para exibir a imagem em tela cheia */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-10 flex items-center justify-center z-50"
+          onClick={closeModal}
+        >
+          <div className="relative max-w-md">
+            <img
+              src={selectedImage}
+              alt="Imagem em tela cheia"
+              className="w-full h-full object-contain"
+            />
+            <button
+              className="absolute top-2 right-2 bg-white text-black rounded-full w-8 h-8 flex items-center justify-center font-bold"
+              onClick={closeModal}
+            >
+              X
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
-};
-
-export default BeforeAfterFade;
+}
