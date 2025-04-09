@@ -9,10 +9,8 @@ import {
   Clock,
   ArrowRight,
   WineIcon as Facebook, Instagram, Youtube,
-  Menu,
-  
 } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import  { Button } from "@/components/ui/button"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import {  BeforeAfterSimpleRow } from "@/components/antes_depois";
 
@@ -48,56 +46,68 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       {/* ===== HEADER / NAVEGAÇÃO ===== */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm">
-      <div className="container flex h-20 items-center justify-between py-4 px-8">
-        <Link href="http://localhost:3000/" className="flex items-center gap-3 transition-transform hover:scale-105">
-          <Image
+      <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-md">
+      <div className="container flex h-20 items-center justify-between py-2 px-4 lg:px-8 mx-auto">
+        <a href="http://localhost:3000/" className="flex items-center gap-3 transition-all duration-300 hover:scale-105 hover:brightness-110">
+          <img
             src="/logo/AUTOCENTER.png"
             alt="WF Auto Center Logo"
-            width={600}
-            height={400}
-            className="h-40 w-50 rounded-md"
+            className="h-45  rounded-md"
           />
-        </Link>
+        </a>
         
-        <nav className="hidden md:flex gap-8">
-          <Link href="/" className="text-sm font-medium relative group">
-            <span className="text-foreground hover:text-primary transition-colors duration-200">Início</span>
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link href="#services" className="text-sm font-medium relative group">
-            <span className="text-foreground hover:text-primary transition-colors duration-200">Serviços</span>
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link href="#gallery" className="text-sm font-medium relative group">
-            <span className="text-foreground hover:text-primary transition-colors duration-200">Antes e Depois</span>
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link href="#about" className="text-sm font-medium relative group">
-            <span className="text-foreground hover:text-primary transition-colors duration-200">Sobre Nós</span>
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link href="#contact" className="text-sm font-medium relative group">
-            <span className="text-foreground hover:text-primary transition-colors duration-200">Contato</span>
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange transition-all duration-300 group-hover:w-full"></span>
-          </Link>
+        <nav className="hidden md:flex gap-6 lg:gap-8">
+          {[
+            { href: "/", label: "Início" },
+            { href: "#services", label: "Serviços" },
+            { href: "#gallery", label: "Antes e Depois" },
+            { href: "#about", label: "Sobre Nós" },
+            { href: "#contact", label: "Contato" }
+          ].map((link) => (
+            <a 
+              href={link.href} 
+              className="text-sm font-medium relative group px-1 py-2" 
+              key={link.href}
+            >
+              <span className="text-gray-800 hover:text-orange-600 transition-colors duration-200">{link.label}</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+          ))}
         </nav>
         
-        <div className="hidden md:flex items-center gap-4">
-          <Button asChild variant="outline" size="sm" className="rounded-full px-4 border-orange-600 hover:bg-stone-200 hover:text-white transition-colors">
-            <Link href="tel:+5500000000000">
-              <span className="flex text-orange-600 items-center gap-2 ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-9 w-9 text-5xl hover:animate-bounce"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                Agendar
-              </span>
-            </Link>
-          </Button>
+        <div className="hidden md:flex items-center">
+          <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 px-5 py-2 shadow-lg hover:shadow-xl transition-all duration-300">
+            <a href="tel:+5500000000000" className="flex items-center gap-3">
+              <div className="bg-white rounded-full p-1.5 shadow">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="16" 
+                  height="16" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  className="h-4 w-4 text-orange-600 group-hover:animate-pulse"
+                >
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <span className="font-bold text-white text-sm whitespace-nowrap">Agendar Agora</span>
+            </a>
+            <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-shine"></div>
+          </button>
         </div>
         
-        <Button variant="ghost" size="icon" className="md:hidden hover:bg-background hover:text-primary">
+        <button className="md:hidden flex items-center justify-center p-2 rounded-full hover:bg-gray-100">
           <span className="sr-only">Abrir menu</span>
-          <Menu className="h-6 w-6" />
-        </Button>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-gray-800">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </header>
 
@@ -132,6 +142,7 @@ export default function Home() {
                   </Button>
                 </div>
               </div>
+              <div className="">
               <Image
                 src="/placeholder.svg?height=550&width=550"
                 width={550}
@@ -139,6 +150,7 @@ export default function Home() {
                 alt="Carro sendo restaurado"
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
               />
+              </div>
             </div>
           </div>
         </section>
@@ -146,11 +158,21 @@ export default function Home() {
         {/* ===== SEÇÃO DE SERVIÇOS ===== */}
         <section id="services" className="py-16 bg-muted/50 px-4 sm:px-6">
           <div className="container justify-center">
-            <div className="text-center space-y- mb-12">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Nossos Serviços</h2>
-              <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-                Oferecemos serviços completos de funilaria, pintura e restauração para transformar seu veículo.
-              </p>
+          <div className="container px-4 md:px-6">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+        <div className="w-full max-w-md space-y-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-center">
+          <span className="bg-orange-500 text-transparent bg-clip-text">
+            Nosso Serviços
+          </span>
+        </h2>
+        <div className="h-1 w-32 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mx-auto"></div>
+      </div>
+
+          <div className="max-w-[900px] text-center text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl/relaxed">
+            Veja a transformação que realizamos em cada veículo que passa por nossas mãos.
+          </div>
+        </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
@@ -213,13 +235,15 @@ export default function Home() {
           <section id="gallery" className="w-full py-8 md:py-16 lg:py-24 bg-gray-50">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <div className="space-y-2 w-full max-w-md">
-            <h2 className="text-2xl font-bold rounded-full bg-orange-600 text-white px-6 py-2 tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl">
-              Antes e Depois
-           .Concurrent
+        <div className="w-full max-w-md space-y-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-center">
+          <span className="bg-orange-500 text-transparent bg-clip-text">
+            Antes e Depois
+          </span>
+        </h2>
+        <div className="h-1 w-32 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mx-auto"></div>
+      </div>
 
-            </h2>
-          </div>
           <div className="max-w-[900px] text-center text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl/relaxed">
             Veja a transformação que realizamos em cada veículo que passa por nossas mãos.
           </div>
@@ -228,19 +252,6 @@ export default function Home() {
         <div className="mx-auto max-w-5xl py-8 md:py-12">
           {/* Componente de fileira de imagens simples */}
           <BeforeAfterSimpleRow images={images} />
-          
-          {/* Logo adicional (opcional) */}
-          <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto mt-8 md:mt-12">
-            <div className="relative aspect-video w-full">
-              <Image
-                src="/logo/AUTOCENTER.png"
-                alt="AutoCenter Logo"
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, (max-width: 1024px) 60vw, 50vw"
-                className="object-contain"
-              />
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -249,7 +260,8 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
               <div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Sobre a WF Auto Center</h2>
+                <h2 className="text-3xl text-orange-600 font-bold tracking-tighter sm:text-4xl md:text-5xl">Sobre a WF Auto Center</h2>
+                <div className="h-1 w-127 bg-gradient-to-r from-orange-400 to-red-500 rounded-full"></div>
                 <div className="mt-4 space-y-4">
                   <p className="text-muted-foreground md:text-lg">
                     A WF Auto Center nasceu da paixão por automóveis e do compromisso com a excelência. Há anos no
@@ -358,138 +370,21 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Entre em Contato</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <div className="h-1 w-32 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mx-auto"></div>
+                <p className="max-w-[900px] mb-10 text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Estamos prontos para atender você e transformar seu veículo.
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
-              <div className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-primary" />
-                  <p>Rua Risoleta Caetano, 444, Pq. Lafaiete, Duque de Caxias, RJ</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="h-5 w-5 text-primary" />
-                  <p>contatowfautocenter@gmail.com.br</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Phone className="h-5 w-5 text-primary" />
-                  <div className="space-y-1">
-                    <p>(21) 96465-6773</p>
-                    <p>(21) 98276-5589</p>
-                    <p>(21) 3134-6492</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="h-5 w-5 text-primary" />
-                  <div className="space-y-1">
-                    <p>Segunda a Sexta: 8H às 18H</p>
-                    <p>Sábado: 8H às 12H</p>
-                  </div>
-                </div>
-                <div className="h-[300px] w-full rounded-xl overflow-hidden mt-6">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3676.7!4m5!3m4!1s0x0:0x0!8m2!3d-22.7!4d-43.3!"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold">Envie uma Mensagem</h3>
-                  <p className="text-muted-foreground">
-                    Preencha o formulário abaixo e entraremos em contato o mais breve possível.
-                  </p>
-                </div>
-                <form className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label
-                        htmlFor="name"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                        Nome
-                      </label>
-                      <input
-                        id="name"
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                        placeholder="Seu nome"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label
-                        htmlFor="phone"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                        Telefone
-                      </label>
-                      <input
-                        id="phone"
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                        placeholder="(00) 00000-0000"
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="email"
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      placeholder="seu@email.com"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="service"
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      Serviço de Interesse
-                    </label>
-                    <select
-                      id="service"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      <option value="">Selecione um serviço</option>
-                      <option value="funilaria">Funilaria</option>
-                      <option value="pintura">Pintura</option>
-                      <option value="polimento">Polimento Técnico</option>
-                      <option value="higienizacao">Higienização</option>
-                      <option value="personalizacao">Personalização</option>
-                      <option value="restauracao">Restauração de Veículos Antigos</option>
-                      <option value="outro">Outro</option>
-                    </select>
-                  </div>
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="message"
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      Mensagem
-                    </label>
-                    <textarea
-                      id="message"
-                      className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      placeholder="Descreva seu veículo e o serviço desejado"
-                    ></textarea>
-                  </div>
-                  <Button type="submit" className="w-full">
-                    Enviar Mensagem
-                  </Button>
-                </form>
-              </div>
-            </div>
+            <div className="flex justify-center">
+            <button className="group relative overflow-hidden bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-70 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2">
+      <span className="relative z-10 text-lg">Fazer Orçamento</span>
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+      </svg>
+      <div className="absolute inset-0 w-1/3 bg-gradient-to-r from-orange-500 to-transparent opacity-0 group-hover:opacity-100 group-hover:blur-sm group-hover:animate-shine"></div>
+    </button>
+    </div>
           </div>
         </section>
       </main>
