@@ -29,9 +29,17 @@ export default function Home() {
       after: '/imagem-antes-depois/onix-depois.jpg',
     },
     { 
-      before: '/imagem-antes-depois/corola-antes.jpg',
-      after: '/imagem-antes-depois/corola-depois.jpg',
+      before: '/imagem-antes-depois/sandeiro-antes.jpg',
+      after: '/imagem-antes-depois/sandeiro-depois.jpg',
     }, 
+    {
+      before: '/imagem-antes-depois/savero-antes.jpg',
+      after: '/imagem-antes-depois/saveiro-depois.jpg',
+    },
+    {
+      before: '/imagem-antes-depois/porta-antes.jpg',
+      after: '/imagem-antes-depois/porta-depois.jpg',
+    },
     {
       before: '/imagem-antes-depois/uno-antes.jpg',
       after: '/imagem-antes-depois/uno-depois.jpg',
@@ -43,7 +51,7 @@ export default function Home() {
       {/* ===== HEADER / NAVEGAÇÃO ===== */}
       <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-md">
         <div className="container flex h-16 sm:h-20 items-center justify-between py-2 px-4 lg:px-8 mx-auto">
-          <div  className="flex items-center gap-3 transition-all duration-300 hover:scale-105 hover:brightness-110">
+          <div className="flex items-center gap-3 transition-all duration-300 hover:scale-105 hover:brightness-110">
             <img
               src="/logo/AUTOCENTER.png"
               alt="WF Auto Center Logo"
@@ -109,41 +117,44 @@ export default function Home() {
 
       <main className="flex-1">
         {/* ===== SEÇÃO HERO ===== */}
-        <section className="w-full py-8 sm:py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-b from-background to-muted">
-  <div className="container px-4 md:px-6">
-    <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-      <div className="flex flex-col justify-center space-y-4 order-2 lg:order-1">
-        <div className="space-y-2">
-          <h1 className="text-2xl sm:text-3xl text-orange-600 font-bold tracking-tighter sm:text-5xl xl:text-6xl/none italic">
-            <span className="space-y-2">AUTO <span className="text-black space-y-2">CENTER</span></span>
-            <p className="text-black">WF LAMTERNAGEM <span className="text-orange-600">.</span></p>
+        <section className="w-full py-8 sm:py-12 md:py-24 lg:py-32 xl:py-40 bg-gradient-to-b from-background to-muted">
+  <div className="container px-4 md:px-6 mx-auto">
+    <div className="grid gap-8 items-center text-center lg:text-left lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+      <div className="flex flex-col justify-center space-y-4 order-2 lg:order-1 mx-auto lg:mx-0 max-w-[600px] w-full">
+        <div className="space-y-3">
+          <h1 className="text-3xl sm:text-4xl text-orange-600 font-bold tracking-tighter sm:text-5xl xl:text-6xl/none italic">
+            <span className="block">AUTO <span className="text-black">CENTER</span></span>
+            <span className="block text-black">WF LANTERNAGEM <span className="text-orange-600">.</span></span>
           </h1>
-          <p className="max-w-[600px] text-muted-foreground text-sm sm:text-base md:text-xl">
+          <p className="text-muted-foreground text-sm sm:text-base md:text-xl">
             Funilaria, pintura e restauração com qualidade e compromisso. Seu carro merece o melhor tratamento.
           </p>
         </div>
         
-        <div className="flex flex-col sm:flex-row gap-3 mt-2">
-          <Button asChild size="lg" className="w-full sm:w-auto text-sm sm:text-base">
+        <div className="flex flex-col sm:flex-row gap-3 mt-4 justify-center lg:justify-start">
+          <Button asChild size="lg" className="w-full sm:w-auto text-sm sm:text-base shadow-sm">
             <Link href="#services">
               Nossos Serviços
               <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
             </Link>
           </Button>
-          <Button className="bg-orange-600 w-full sm:w-auto text-sm sm:text-base" asChild variant="outline" size="lg">
+          <Button className="bg-orange-600 w-full sm:w-auto text-sm sm:text-base shadow-sm" asChild variant="outline" size="lg">
             <Link href="#contact">Agende uma Visita</Link>
           </Button>
         </div>
       </div>
-      <div className="mb-4 sm:mb-6 lg:mb-0 order-1 lg:order-2">
-        <Image
-          src="/placeholder.svg?height=550&width=550"
-          width={550}
-          height={550}
-          alt="Carro sendo restaurado"
-          className="mx-auto aspect-video overflow-hidden rounded-xl object-cover w-full sm:w-full lg:order-last"
-          priority
-        />
+      
+      <div className="mb-6 lg:mb-0 order-1 lg:order-2 flex justify-center mx-auto w-full">
+        <div className="w-full max-w-[350px] sm:max-w-[450px] lg:max-w-[500px] xl:max-w-[580px]">
+          <Image
+            src="/logo/homebaner.png"
+            width={600}
+            height={400}
+            alt="Carro sendo restaurado"
+            className="overflow-hidden rounded-xl object-cover w-full h-auto shadow-lg"
+            priority
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -151,83 +162,95 @@ export default function Home() {
 
         {/* ===== SEÇÃO DE SERVIÇOS ===== */}
         <section id="services" className="py-16 bg-muted/50 px-4 sm:px-6">
-          <div className="container">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="w-full max-w-md space-y-4">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-center">
-                  <span className="bg-orange-500 text-transparent bg-clip-text">
-                    Nosso Serviços
-                  </span>
-                </h2>
-                <div className="h-1 w-32 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mx-auto"></div>
-              </div>
+  <div className="container mx-auto">
+    <div className="flex flex-col items-center justify-center space-y-4 text-center">
+      <div className="w-full max-w-md space-y-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-center">
+          <span className="bg-orange-500 text-transparent bg-clip-text">
+            Nossos Serviços
+          </span>
+        </h2>
+        <div className="h-1 w-32 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mx-auto"></div>
+      </div>
 
-              <div className="max-w-[900px] text-center text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl/relaxed">
-                Veja a transformação que realizamos em cada veículo que passa por nossas mãos.
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-8">
-              {[
-                {
-                  title: "Funilaria",
-                  description: "Reparos estruturais com precisão para devolver a integridade do seu veículo.",
-                  image: "/placeholder.svg?height=300&width=400",
-                },
-                {
-                  title: "Pintura",
-                  description: "Pintura de alta qualidade com acabamento perfeito e cores originais.",
-                  image: "/placeholder.svg?height=300&width=400",
-                },
-                {
-                  title: "Polimento Técnico",
-                  description: "Recuperação do brilho e proteção da pintura do seu veículo.",
-                  image: "/placeholder.svg?height=300&width=400",
-                },
-                {
-                  title: "Higienização",
-                  description: "Limpeza profunda que elimina germes e odores, deixando seu carro como novo.",
-                  image: "/placeholder.svg?height=300&width=400",
-                },
-                {
-                  title: "Personalização",
-                  description: "Customização do seu veículo de acordo com seu estilo e preferências.",
-                  image: "/placeholder.svg?height=300&width=400",
-                },
-                {
-                  title: "Restauração de Veículos Antigos",
-                  description: "Devolvemos a vida e o charme original aos clássicos com cuidado e expertise.",
-                  image: "/placeholder.svg?height=300&width=400",
-                },
-              ].map((service, index) => (
-                <div
-                  key={index}
-                  className="bg-background rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105"
-                >
-                  <div className="relative h-48">
-                    <Image
-                      src={service.image || "/placeholder.svg"}
-                      alt={service.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold">{service.title}</h3>
-                    <p className="mt-2 text-muted-foreground">{service.description}</p>
-                    <Button variant="link" className="mt-4 p-0" asChild>
-                      <Link href="#contact">Solicitar Orçamento</Link>
-                    </Button>
-                  </div>
-                </div>
-              ))}
-            </div>
+      <div className="max-w-[900px] text-center text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl/relaxed">
+        Veja a transformação que realizamos em cada veículo que passa por nossas mãos.
+      </div>
+    </div>
+    
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-8">
+      {[
+        {
+          title: "Funilaria",
+          description: "Reparos estruturais com precisão para devolver a integridade do seu veículo.",
+          video: "/videos/lanternagem.mp4", // Substitua pelo caminho real do seu vídeo
+          poster: "/placeholder.svg?height=300&width=400", // Imagem de fallback enquanto o vídeo carrega
+        },
+        {
+          title: "Pintura",
+          description: "Pintura de alta qualidade com acabamento perfeito e cores originais.",
+          video: "/videos/pintura.mp4", // Substitua pelo caminho real do seu vídeo
+          poster: "/placeholder.svg?height=300&width=400",
+        },
+        {
+          title: "Polimento Técnico",
+          description: "Recuperação do brilho e proteção da pintura do seu veículo.",
+          video: "/videos/polimento.mp4", // Substitua pelo caminho real do seu vídeo
+          poster: "/placeholder.svg?height=300&width=400",
+        },
+        {
+          title: "Higienização",
+          description: "Limpeza profunda que elimina germes e odores, deixando seu carro como novo.",
+          video: "/videos/higienização.mp4", // Substitua pelo caminho real do seu vídeo
+          poster: "/placeholder.svg?height=300&width=400",
+        },
+        {
+          title: "Personalização",
+          description: "Customização do seu veículo de acordo com seu estilo e preferências.",
+          video: "/videos/personalizacao.mp4", // Substitua pelo caminho real do seu vídeo
+          poster: "/placeholder.svg?height=300&width=400",
+        },
+        {
+          title: "Restauração de Veículos Antigos",
+          description: "Devolvemos a vida e o charme original aos clássicos com cuidado e expertise.",
+          video: "/videos/restauracao.mp4", // Substitua pelo caminho real do seu vídeo
+          poster: "/placeholder.svg?height=300&width=400",
+        },
+      ].map((service, index) => (
+        <div
+          key={index}
+          className="bg-background rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105"
+        >
+          <div className="relative h-100">
+            <video 
+              className="absolute inset-0 w-full h-full object-cover"
+              src={service.video} 
+              poster={service.poster}
+              muted
+              loop
+              playsInline
+              onMouseEnter={(e) => e.target.play()}
+              onMouseLeave={(e) => {
+                e.target.pause();
+                e.target.currentTime = 0;
+              }}
+            />
           </div>
-        </section>
-
+          <div className="p-4">
+            <h3 className="text-xl font-bold">{service.title}</h3>
+            <p className="mt-2 text-muted-foreground">{service.description}</p>
+            <Button variant="link" className="mt-4 p-0" asChild>
+              <Link href="#contact">Solicitar Orçamento</Link>
+            </Button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
         {/* Componente Antes e Depois */}
         <section id="gallery" className="w-full py-8 md:py-16 lg:py-24 bg-gray-50">
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="w-full max-w-md space-y-4">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-center">
@@ -252,7 +275,7 @@ export default function Home() {
 
         {/* ===== SEÇÃO SOBRE NÓS ===== */}
         <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-muted">
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 mx-auto">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
               <div>
                 <h2 className="text-3xl text-orange-600 font-bold tracking-tighter sm:text-4xl md:text-5xl">Sobre a WF Auto Center</h2>
@@ -361,12 +384,12 @@ export default function Home() {
 
         {/* ===== SEÇÃO DE CONTATO ===== */}
         <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 mx-auto">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Entre em Contato</h2>
                 <div className="h-1 w-32 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mx-auto"></div>
-                <p className="max-w-[900px] mb-10 text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="max-w-[900px] mx-auto mb-10 text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Estamos prontos para atender você e transformar seu veículo.
                 </p>
               </div>
