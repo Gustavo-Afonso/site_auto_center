@@ -183,37 +183,37 @@ export default function Home() {
         {
           title: "Funilaria",
           description: "Reparos estruturais com precisão para devolver a integridade do seu veículo.",
-          video: "/videos/lanternagem.mp4", // Substitua pelo caminho real do seu vídeo
-          poster: "/placeholder.svg?height=300&width=400", // Imagem de fallback enquanto o vídeo carrega
+          video: "/videos/lanternagem.mp4",
+          poster: "/placeholder.svg?height=300&width=400",
         },
         {
           title: "Pintura",
           description: "Pintura de alta qualidade com acabamento perfeito e cores originais.",
-          video: "/videos/pintura.mp4", // Substitua pelo caminho real do seu vídeo
+          video: "/videos/pintura.mp4",
           poster: "/placeholder.svg?height=300&width=400",
         },
         {
           title: "Polimento Técnico",
           description: "Recuperação do brilho e proteção da pintura do seu veículo.",
-          video: "/videos/polimento.mp4", // Substitua pelo caminho real do seu vídeo
+          video: "/videos/polimento.mp4",
           poster: "/placeholder.svg?height=300&width=400",
         },
         {
           title: "Higienização",
           description: "Limpeza profunda que elimina germes e odores, deixando seu carro como novo.",
-          video: "/videos/higienização.mp4", // Substitua pelo caminho real do seu vídeo
+          video: "/videos/higienização.mp4",
           poster: "/placeholder.svg?height=300&width=400",
         },
         {
           title: "Personalização",
           description: "Customização do seu veículo de acordo com seu estilo e preferências.",
-          video: "/videos/personalizacao.mp4", // Substitua pelo caminho real do seu vídeo
+          video: "/videos/personalizacao.mp4",
           poster: "/placeholder.svg?height=300&width=400",
         },
         {
           title: "Restauração de Veículos Antigos",
           description: "Devolvemos a vida e o charme original aos clássicos com cuidado e expertise.",
-          video: "/videos/restauracao.mp4", // Substitua pelo caminho real do seu vídeo
+          video: "/videos/restauracao.mp4",
           poster: "/placeholder.svg?height=300&width=400",
         },
       ].map((service, index) => (
@@ -229,11 +229,7 @@ export default function Home() {
               muted
               loop
               playsInline
-              onMouseEnter={(e) => e.target.play()}
-              onMouseLeave={(e) => {
-                e.target.pause();
-                e.target.currentTime = 0;
-              }}
+              autoPlay // Adicionado para iniciar automaticamente
             />
           </div>
           <div className="p-4">
