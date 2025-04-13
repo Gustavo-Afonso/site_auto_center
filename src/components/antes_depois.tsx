@@ -32,7 +32,7 @@ export function BeforeAfterSimpleRow({ images }: BeforeAfterSimpleRowProps) {
             className="flex flex-col md:flex-row gap-4 max-w-4xl mx-auto"
           >
             {/* Imagem "Antes" */}
-            <div className="w-full h-48 sm:h-64 md:h-80 lg:h-96 rounded-lg shadow-lg overflow-hidden cursor-pointer">
+            <div className="w-full h-80 sm:h-64 md:h-80 lg:h-96 rounded-lg shadow-lg overflow-hidden cursor-pointer">
               <img
                 src={image.before}
                 alt={`Antes ${index + 1}`}
@@ -45,7 +45,7 @@ export function BeforeAfterSimpleRow({ images }: BeforeAfterSimpleRowProps) {
             </div>
 
             {/* Imagem "Depois" */}
-            <div className="w-full h-48 sm:h-64 md:h-80 lg:h-96 rounded-lg shadow-lg overflow-hidden cursor-pointer">
+            <div className="w-full h-80 sm:h-64 md:h-80 lg:h-96 rounded-lg shadow-lg overflow-hidden cursor-pointer">
               <img
                 src={image.after}
                 alt={`Depois ${index + 1}`}
