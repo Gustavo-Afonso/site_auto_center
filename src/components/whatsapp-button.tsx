@@ -2,15 +2,12 @@
 
 import { Button } from "@/components/ui/button"
 
-interface WhatsAppButtonProps {
-  phoneNumber: string
-}
 
-export function WhatsAppButton({ phoneNumber }: WhatsAppButtonProps) {
+export function WhatsAppButton() {
   return (
     <Button
   className="fixed bottom-6 right-6 rounded-full p-7 shadow-lg bg-green-500 hover:bg-green-600 text-white transition-all duration-300 hover:scale-110"
-  onClick={() => window.open(`https://wa.me/${phoneNumber}`, "_blank")}
+  onClick={() => window.open('https://wa.me/5521964656773?text=Quero%20fazer%20um%20orçamento!', "_blank")}
 >
   <svg 
     xmlns="http://www.w3.org/2000/svg" 

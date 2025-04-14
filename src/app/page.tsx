@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { BeforeAfterSimpleRow } from "@/components/antes_depois";
+import { useState } from "react";
 
 export default function Home() {
   const images = [
@@ -46,74 +47,168 @@ export default function Home() {
     },
   ];
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const navLinks = [
+    { href: "/", label: "Início" },
+    { href: "#services", label: "Serviços" },
+    { href: "#gallery", label: "Antes e Depois" },
+    { href: "#about", label: "Sobre Nós" },
+    { href: "#contact", label: "Contato" }
+  ];
+
   return (
     <div className="flex min-h-screen flex-col">
       {/* ===== HEADER / NAVEGAÇÃO ===== */}
       <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-md">
-        <div className="container flex h-16 sm:h-20 items-center justify-between py-2 px-4 lg:px-8 mx-auto">
-          <div className="flex items-center gap-3 transition-all duration-300 hover:scale-105 hover:brightness-110">
-            <img
-              src="/logo/AUTOCENTER.png"
-              alt="WF Auto Center Logo"
-              className="h-30 sm:h-47 rounded-md"
-            />
-          </div>
-          
-          <nav className="hidden md:flex gap-4 lg:gap-8">
-            {[
-              { href: "/", label: "Início" },
-              { href: "#services", label: "Serviços" },
-              { href: "#gallery", label: "Antes e Depois" },
-              { href: "#about", label: "Sobre Nós" },
-              { href: "#contact", label: "Contato" }
-            ].map((link) => (
-              <a 
-                href={link.href} 
-                className="text-sm font-medium relative group px-1 py-2" 
-                key={link.href}
-              >
-                <span className="text-gray-800 hover:text-orange-600 transition-colors duration-200">{link.label}</span>
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
-          </nav>
-          
-          <div className="hidden md:flex items-center">
-            <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 px-5 py-2 shadow-lg hover:shadow-xl transition-all duration-300">
-              <a href="tel:+5500000000000" className="flex items-center gap-3">
-                <div className="bg-white rounded-full p-1.5 shadow">
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    width="16" 
-                    height="16" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="h-4 w-4 text-orange-600 group-hover:animate-pulse"
-                  >
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                </div>
-                <span className="font-bold text-white text-sm whitespace-nowrap">Agendar Agora</span>
-              </a>
-              <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-shine"></div>
-            </button>
-          </div>
-          
-          {/* Mobile Menu Button */}
-          <button className="md:hidden flex items-center justify-center p-2 rounded-full hover:bg-gray-100">
-            <span className="sr-only">Abrir menu</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-gray-800">
+      <div className="container flex h-16 sm:h-20 items-center justify-between py-2 px-4 lg:px-8 mx-auto">
+        <div className="flex items-center gap-3 transition-all duration-300 hover:scale-105 hover:brightness-110">
+          <img src="/logo/AUTOCENTER.png" alt="WF Auto Center Logo" className="h-25 sm:h-40 rounded-md" />
+        </div>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex gap-4 lg:gap-8">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              className="text-sm font-medium relative group px-1 py-2"
+              key={link.href}
+            >
+              <span className="text-gray-800 hover:text-orange-600 transition-colors duration-200">
+                {link.label}
+              </span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+          ))}
+        </nav>
+
+        {/* Desktop CTA Button */}
+        <div className="hidden md:flex items-center">
+          <button className="group relative overflow-hidden rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 px-5 py-2 shadow-lg hover:shadow-xl transition-all duration-300">
+            <a
+              href="https://wa.me/5521964656773?text=Quero%20fazer%20um%20orçamento!"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3"
+            >
+              <div className="bg-white rounded-full p-1.5 shadow">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-4 w-4 text-orange-600 group-hover:animate-pulse"
+                >
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+              <span className="font-bold text-white text-sm whitespace-nowrap">
+                Agendar Agora
+              </span>
+            </a>
+            <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-shine"></div>
+          </button>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={toggleMobileMenu}
+          className="md:hidden flex items-center justify-center p-2 rounded-full hover:bg-gray-100"
+          aria-expanded={isMobileMenuOpen}
+          aria-label="Toggle mobile menu"
+        >
+          <span className="sr-only">Abrir menu</span>
+          {isMobileMenuOpen ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-6 w-6 text-gray-800"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-6 w-6 text-gray-800"
+            >
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
-          </button>
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden">
+          <div className="flex flex-col px-4 pt-2 pb-3 space-y-1 bg-white shadow-lg border-t">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-gray-800 hover:text-orange-600 px-3 py-3 text-base font-medium border-b border-gray-200 last:border-0"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+            
+            {/* Mobile CTA Button */}
+            <div className="pt-2 pb-1">
+              <a
+                href="https://wa.me/5521964656773?text=Quero%20fazer%20um%20orçamento!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:from-orange-600 hover:to-orange-700 transition-all duration-300"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                >
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                Agendar Agora
+              </a>
+            </div>
+          </div>
         </div>
-      </header>
+      )}
+    </header>
 
       <main className="flex-1">
         {/* ===== SEÇÃO HERO ===== */}
@@ -207,13 +302,13 @@ export default function Home() {
         {
           title: "Personalização",
           description: "Customização do seu veículo de acordo com seu estilo e preferências.",
-          video: "/videos/personalizacao.mp4",
+          video: "/videos/gol-reformado.mp4",
           poster: "/placeholder.svg?height=300&width=400",
         },
         {
           title: "Restauração de Veículos Antigos",
           description: "Devolvemos a vida e o charme original aos clássicos com cuidado e expertise.",
-          video: "/videos/restauracao.mp4",
+          video: "/videos/fusca-reformado.mp4",
           poster: "/placeholder.svg?height=300&width=400",
         },
       ].map((service, index) => (
@@ -390,54 +485,61 @@ export default function Home() {
         </p>
       </div>
     </div>
+
     <div className="flex justify-center">
-      <div className="group relative overflow-hidden bg-orange-600 hover:bg-orange-700 text-white font-bold py-6 px-6 sm:px-10 md:px-30 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto">
+      <a
+        href="https://wa.me/5521964656773?text=Quero%20fazer%20um%20orçamento!"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative overflow-hidden bg-orange-600 hover:bg-orange-700 text-white font-bold py-6 px-6 sm:px-10 md:px-30 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto"
+      >
         <span className="relative z-10 text-lg">Fazer Orçamento</span>
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          width="24" 
-          height="24" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300"
         >
-          <path d="M5 12h14"/>
-          <path d="m12 5 7 7-7 7"/>
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
         </svg>
         <div className="absolute inset-0 w-1/3 bg-gradient-to-r from-orange-500 to-transparent opacity-0 group-hover:opacity-100 group-hover:blur-sm group-hover:animate-shine"></div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
+
       </main>
 
       {/* ===== RODAPÉ ===== */}
       <footer className="bg-black text-white">
-        <div className="container mx-auto px-4 py-12">
+        <div className="container items-center mx-auto px-4 py-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-  <Link href="/" className="flex items-center space-x-2 mb-4">
-    <div className="relative h-16 w-16 sm:h-20 sm:w-20">
-      <Image
-        src="/logo/icone.jpg"
-        alt="WF Auto Center Logo"
-        width={100}
-        height={100}
-        className="rounded-md"
-      />
-    </div>
-    <span className="text-xl font-bold">WF Auto Center</span>
+          <Link href="/" className="flex items-center">
+          <div className="flex justify-center mb-4">
+  <div className="relative h-50 w-50 :h-50 sm:w-50"> {/* Ajustado sm:h-40/w-40 para evitar valor inválido sm:h-50 */}
+    <Image
+      src="/logo/icone.jpg"
+      alt="WF Auto Center Logo"
+      width={500}
+      height={500}
+      className="rounded-md"
+    />
+  </div>
+</div>
   </Link>
   <p className="text-slate-300 mb-4">
     Excelência em funilaria, pintura e restauração de veículos em Duque de Caxias.
   </p>
   <div className="flex space-x-4">
     <Link
-      href="https://wa.me/SEUNUMERO"  // Substitua SEUNUMERO pelo número completo com código do país
+      href="https://wa.me/5521964656773?text=Quero%20fazer%20um%20orçamento!"  // Substitua SEUNUMERO pelo número completo com código do país
       target="_blank"
       rel="noopener noreferrer"
       className="text-green-500 hover:text-white transition-colors"
@@ -448,7 +550,7 @@ export default function Home() {
       <span className="sr-only">WhatsApp</span>
     </Link>
     <Link
-      href="https://instagram.com"
+      href="https://www.instagram.com/wfautocenter/"
       target="_blank"
       rel="noopener noreferrer"
       className="text-pink-500 hover:text-white transition-colors"
@@ -458,6 +560,13 @@ export default function Home() {
       </svg>
       <span className="sr-only">Instagram</span>
     </Link>
+    <Link href="https://www.facebook.com/WFautocenterLanternagem?mibextid=wwXIfr&rdid=HeJaNNzs7LzFS9Ft&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BGEvYXEG9%2F%3Fmibextid%3DwwXIfr#" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-white transition-colors">
+    {/* Facebook */}
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.466.099 2.797.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.31h3.587l-.467 3.622h-3.12V24h6.116C23.407 24 24 23.407 24 22.676V1.325C24 .593 23.407 0 22.675 0z"/>
+    </svg>
+    <span className="sr-only">Facebook</span>
+  </Link> 
   </div>
 </div>
 
@@ -563,7 +672,7 @@ export default function Home() {
       </footer>
 
       {/* ===== BOTÃO WHATSAPP FLUTUANTE ===== */}
-      <WhatsAppButton phoneNumber="5521964656773" />
+      <WhatsAppButton />
     </div>
   );
 }
