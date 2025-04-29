@@ -2,6 +2,7 @@ import type React from "react"
 import "@/app/globals.css"
 import { Inter } from "next/font/google"
 import type { Metadata } from "next"
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -29,7 +30,7 @@ export default function RootLayout({
         <meta name="geo.placename" content="Duque de Caxias" />
         <link rel="canonical" href="https://www.wfautocenter.com.br" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>{children}<Analytics /></body>
     </html>
   )
 }
