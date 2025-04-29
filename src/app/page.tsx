@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { BeforeAfterSimpleRow } from "@/components/antes_depois";
 import { useRef, useState } from "react";
+import ServicesSection from "@/components/sectiom";
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -289,90 +290,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Services Section */}
-        <section id="services" className="py-16 bg-muted/50 px-4 sm:px-6">
-          <div className="container mx-auto">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="w-full max-w-md space-y-4">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-center">
-                  <span className="bg-orange-500 text-transparent bg-clip-text">
-                    Nossos Serviços
-                  </span>
-                </h2>
-                <div className="h-1 w-32 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mx-auto"></div>
-              </div>
-
-              <div className="max-w-[900px] text-center text-gray-600 text-sm sm:text-base md:text-lg lg:text-xl/relaxed">
-                Veja a transformação que realizamos em cada veículo que passa por nossas mãos.
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-8">
-              {[
-                {
-                  title: "Funilaria",
-                  description: "Reparos estruturais com precisão para devolver a integridade do seu veículo.",
-                  video: "/videos/lanternagem.mp4",
-                  poster: "/placeholder.svg?height=300&width=400",
-                },
-                {
-                  title: "Pintura",
-                  description: "Pintura de alta qualidade com acabamento perfeito e cores originais.",
-                  video: "/videos/pintura.mp4",
-                  poster: "/placeholder.svg?height=300&width=400",
-                },
-                {
-                  title: "Polimento Técnico",
-                  description: "Recuperação do brilho e proteção da pintura do seu veículo.",
-                  video: "/videos/polimento.mp4",
-                  poster: "/placeholder.svg?height=300&width=400",
-                },
-                {
-                  title: "Higienização",
-                  description: "Limpeza profunda que elimina germes e odores, deixando seu carro como novo.",
-                  video: "/videos/higienização.mp4",
-                  poster: "/placeholder.svg?height=300&width=400",
-                },
-                {
-                  title: "Personalização",
-                  description: "Customização do seu veículo de acordo com seu estilo e preferências.",
-                  video: "/videos/gol-reformado.mp4",
-                  poster: "/placeholder.svg?height=300&width=400",
-                },
-                {
-                  title: "Restauração de Veículos Antigos",
-                  description: "Devolvemos a vida e o charme original aos clássicos com cuidado e expertise.",
-                  video: "/videos/fusca-reformado.mp4",
-                  poster: "/placeholder.svg?height=300&width=400",
-                },
-              ].map((service, index) => (
-                <div
-                  key={index}
-                  className="bg-background rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105"
-                >
-                  <div className="relative h-100">
-                    <video 
-                      className="absolute inset-0 w-full h-full object-cover"
-                      src={service.video} 
-                      poster={service.poster}
-                      muted
-                      loop
-                      playsInline
-                      autoPlay
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="text-xl font-bold">{service.title}</h3>
-                    <p className="mt-2 text-muted-foreground">{service.description}</p>
-                    <Button variant="link" className="mt-4 p-0" asChild>
-                      <Link href="#contact">Solicitar Orçamento</Link>
-                    </Button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ServicesSection/>
 
         {/* Gallery Section */}
         <section id="gallery" className="w-full py-8 md:py-16 lg:py-24 bg-gray-50">
