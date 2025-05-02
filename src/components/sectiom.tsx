@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Button } from './ui/button'; // Adjust path to your Button component

@@ -29,7 +29,7 @@ export default function RootLayout({
         <meta name="author" content="WF Auto Center" />
         <meta name="geo.region" content="BR-RJ" />
         <meta name="geo.placename" content="Duque de Caxias" />
-        <link rel="canonical" href="https://www.wfautocenter.com.br" />
+        <link rel="canonical" href="https://www.wflanternagem.com.br" />
       </head>
       <body className={inter.className}>{children}<Analytics /><SpeedInsights /></body>
     </html>
