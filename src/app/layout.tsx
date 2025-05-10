@@ -23,18 +23,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <head>
-        <meta name= "google-site-verification" content="googleb22ad40b5872be06"/>
-        <meta name="google-site-verification" content="eBHfNtNh84MlsM25CsLQhH7JgK25a5GnPM8M6mZZDOE" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content="WF Auto Center" />
-        <meta name="geo.region" content="BR-RJ" />
-        <meta name="geo.placename" content="Duque de Caxias" />
-        <link rel="canonical" href="https://www.wflanternagem.com.br" />
-      </head>
-      <body className={inter.className}>{children}<Analytics /><SpeedInsights /></body>
-    </html>
+  <head>
+    <meta name="google-site-verification" content="eBHfNtNh84MlsM25CsLQhH7JgK25a5GnPM8M6mZZDOE" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="WF Auto Center" />
+    <meta name="geo.region" content="BR-RJ" />
+    <meta name="geo.placename" content="Duque de Caxias" />
+    <link rel="canonical" href="https://www.wflanternagem.com.br" />
+  </head>
+  <body className={inter.className}>
+    {children}
+    <Analytics />
+    <SpeedInsights />
+  </body>
+</html>
+
   )
 }
 
