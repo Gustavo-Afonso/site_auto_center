@@ -181,8 +181,8 @@ export default function Home() {
 
                 <div className="space-y-3">
                   <h1 className="text-4xl text-white font-black tracking-tighter sm:text-5xl xl:text-7xl italic">
-                    <span className="block">AUTO <span className="text-orange-500">CENTER</span></span>
-                    <span className="block text-orange-500">WF <span className="text-white">LANTERNAGEM</span></span>
+                    <span className="block">AUTO <span className="text-orange-500">CENTER</span> <span className="text-orange-500">WF</span></span>
+                    <span className="block text-white">LANTERNAGEM</span>
                   </h1>
                   <p className="text-zinc-400 text-base sm:text-lg md:text-xl max-w-md mx-auto lg:mx-0 pt-1">
                     Funilaria, pintura e restauração com qualidade e compromisso. Seu carro merece o melhor tratamento.
